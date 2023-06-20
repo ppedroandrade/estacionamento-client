@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import InicialView from '../views/InicialView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      name: 'InicialScreen',
+      component: InicialView
+    },
+    {
+      path: '/home',
       name: 'home',
       component: HomeView
     },

@@ -1,59 +1,79 @@
 <template>
-  <div class="container">
-    <h1 class="text-center mt-5">Sistema de Estacionamento</h1>
-    <div class="row mt-5">
-      <div class="col-md-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Registro de Veículos</h5>
-            <p class="card-text">Registre a entrada de veículos no estacionamento.</p>
-            <router-link to="/registro" class="btn btn-primary">Registrar Veículo</router-link>
-          </div>
+  <div class="containerDashboar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sistema de Reserva</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Reservas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Clientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Configurações</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sair</a>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="col-md-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Lista de Veículos</h5>
-            <p class="card-text">Visualize a lista de veículos registrados.</p>
-            <router-link to="/lista" class="btn btn-primary">Ver Lista</router-link>
-          </div>
+    </nav>
+    <div class="container mt-4">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">Controle de Entrada e Saída</h3>
         </div>
-      </div>
-      <div class="col-md-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Lista de Condutores</h5>
-            <p class="card-text">Visualize a lista de Condutores registrados.</p>
-            <router-link to="/lista" class="btn btn-primary">Ver Lista</router-link>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Registro de Condutores</h5>
-            <p class="card-text">Registre a entrada de Condutores no estacionamento.</p>
-            <router-link to="/lista" class="btn btn-primary">Ver Lista</router-link>
-          </div>
+        <div class="card-body">
+          <p class="card-text">Bem-vindo(a) ao sistema de controle de entrada e saída.</p>
+          <!-- Adicione aqui mais elementos para o controle de entrada e saída -->
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App'
-}
-</script>
+<script></script>
 
-<style>
+<style scoped>
 .container {
-  max-width: 600px;
+  max-width: 800px;
 }
 
-.mb-4 {
-  margin-bottom: 1.5rem;
+.card {
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  background-color: var(--primary);
+  color: var(--light);
+  padding: 1.5rem;
+}
+
+.card-header h3 {
+  margin-bottom: 0;
+}
+
+.card-body {
+  padding: 1.5rem;
 }
 </style>
