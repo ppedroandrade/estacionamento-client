@@ -1,5 +1,5 @@
 <template>
-  <div class="containerDashboar">
+  <div class="container1Dashboar overflow-x-hidden">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Sistema de Reserva</a>
@@ -15,15 +15,12 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav mb-0">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="/home">Dash Board</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Reservas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Clientes</a>
+              <a class="nav-link" href="/about">Condutores/veiculos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Configurações</a>
@@ -31,20 +28,67 @@
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Sair</a>
+              <a class="nav-link" href="/">Sair</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div class="container mt-4">
+    <div class="container1 mt-4">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between">
           <h3 class="mb-0">Controle de Entrada e Saída</h3>
+          <button class="btn btn-outline-secondary">Efetuar um cadastro</button>
         </div>
         <div class="card-body">
           <p class="card-text">Bem-vindo(a) ao sistema de controle de entrada e saída.</p>
-          <!-- Adicione aqui mais elementos para o controle de entrada e saída -->
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="card-body">
+              <h1 class="card-title">Registrar entrada</h1>
+              <form>
+                <div class="form-group">
+                  <label for="username">Placa do Carro</label>
+                  <input type="text" id="username" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label for="password">Nome do Condutor</label>
+                  <input type="text" id="password" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label for="password">Documento do Condutor</label>
+                  <input type="text" id="password" class="form-control" />
+                </div>
+                <div class="btn-group gap-2 btn-group-lg">
+                  <button class="btn btn-secondary btn-block">Efetuar entrada</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card-body">
+              <h1 class="card-title">Registrar Saída</h1>
+              <form>
+                <div class="form-group">
+                  <label for="username">Placa do Carro</label>
+                  <input type="text" id="username" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label for="password">Nome do Condutor</label>
+                  <input type="text" id="password" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label for="password">Documento do Condutor</label>
+                  <input type="text" id="password" class="form-control" />
+                </div>
+                <div class="btn-group gap-2 btn-group-lg">
+                  <button class="btn btn-secondary btn-block">Efetuar saída</button>
+                  <button class="btn btn-secondary btn-block">Escanear Ticket</button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -54,26 +98,11 @@
 <script></script>
 
 <style scoped>
-.container {
+.container11 {
   max-width: 800px;
+  height: 100%;
 }
-
-.card {
-  border: none;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-}
-
-.card-header {
-  background-color: var(--primary);
-  color: var(--light);
-  padding: 1.5rem;
-}
-
-.card-header h3 {
-  margin-bottom: 0;
-}
-
-.card-body {
-  padding: 1.5rem;
+.container1Dashboar {
+  max-width: 100%;
 }
 </style>
