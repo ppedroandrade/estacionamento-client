@@ -23,7 +23,7 @@
                       <label for="password">Senha</label>
                       <input type="password" id="password" class="form-control" />
                     </div>
-                    <router-link to="/home" class="btn btn-primary btn-block">Login</router-link>
+                    <router-link to="/home" class="btn btn-secondary btn-block">Login</router-link>
                   </form>
                 </div>
               </div>

@@ -23,7 +23,7 @@
               <a class="nav-link" href="/about">Condutores/veiculos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Configurações</a>
+              <a class="nav-link" href="/configuracao">Configurações</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
@@ -34,16 +34,16 @@
         </div>
       </div>
     </nav>
-    <div class="container1 mt-4">
-      <div class="card">
-        <div class="card-header d-flex justify-content-between">
-          <h3 class="mb-0">Informações sobre Condutores/veiculos</h3>
-          <button class="btn btn-outline-secondary">Efetuar um cadastro</button>
-        </div>
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <h3 class="mb-0">Informações sobre Condutores/veiculos</h3>
+        <button class="btn btn-outline-secondary">Efetuar um cadastro</button>
       </div>
-      <div class=".container-sm">
+    </div>
+    <div class="container1 mt-4">
+      <div class="container-sm">
         <div class="accordion border border-gray rounded" id="accordionPanelsStayOpenExample">
-          <div class="accordion-item">
+          <div class="accordion-item accordion-secondary">
             <h2 class="accordion-header">
               <button
                 class="accordion-button"
@@ -53,28 +53,32 @@
                 aria-expanded="true"
                 aria-controls="panelsStayOpen-collapseOne"
               >
-                Veiculos
+                Condutores
               </button>
             </h2>
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body"></div>
+              <div class="accordion-body">
+                <TableUsers />
+              </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button
-                class="accordion-button collapsed"
+                class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseTwo"
-                aria-expanded="false"
+                aria-expanded="true"
                 aria-controls="panelsStayOpen-collapseTwo"
               >
-                Condutores
+                Veículos
               </button>
             </h2>
-            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-              <div class="accordion-body"></div>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+                <TableVeicules />
+              </div>
             </div>
           </div>
         </div>
@@ -83,14 +87,31 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import TableUsers from '../components/TableConductor.vue'
+import TableVeicules from '../components/TableVeicule.vue'
+
+export default {
+  components: {
+    TableUsers,
+    TableVeicules
+  }
+}
+</script>
 
 <style scoped>
-.container11 {
-  max-width: 800px;
-  height: 100%;
-}
 .container1Dashboar {
   max-width: 100%;
+}
+
+.container1 {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-responsive {
+  max-height: 900px;
+  overflow-y: auto;
 }
 </style>

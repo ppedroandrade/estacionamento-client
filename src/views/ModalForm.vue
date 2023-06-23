@@ -37,58 +37,73 @@
     <div class="container1 mt-4">
       <div class="card">
         <div class="card-header d-flex justify-content-between">
-          <h3 class="mb-0">Controle de Entrada e Saída</h3>
-          <router-link to="/cadastro" class="btn btn-outline-secondary"
-            >Efetuar um cadastro</router-link
-          >
+          <h3 class="mb-0">Registar Um Cliente Novo</h3>
+          <router-link to="/home" class="btn btn-outline-secondary">Cancelar</router-link>
         </div>
         <div class="card-body">
-          <p class="card-text">Bem-vindo(a) ao sistema de controle de entrada e saída.</p>
+          <p class="card-text"></p>
         </div>
         <div class="row">
           <div class="col-6">
             <div class="card-body">
-              <h1 class="card-title">Registrar entrada</h1>
+              <h1 class="card-title">Informações do Veículo</h1>
               <form>
                 <div class="form-group">
                   <label for="username">Placa do Carro</label>
                   <input type="text" id="username" class="form-control" />
                 </div>
                 <div class="form-group">
-                  <label for="password">Nome do Condutor</label>
+                  <label for="password">Modelo</label>
                   <input type="text" id="password" class="form-control" />
                 </div>
                 <div class="form-group">
-                  <label for="password">Documento do Condutor</label>
+                  <label for="password">Marca</label>
                   <input type="text" id="password" class="form-control" />
                 </div>
-                <div class="btn-group gap-2 btn-group-lg">
-                  <button class="btn btn-secondary btn-block">Efetuar entrada</button>
+                <div class="form-group">
+                  <label for="password">Cor</label>
+                  <input type="text" id="password" class="form-control" />
+                </div>
+                <div class="form-group">
+                  <label for="password">Tipo</label>
+
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    style="border: 1.5px solid #ccc"
+                  >
+                    <option value="1">Carro</option>
+                    <option value="2">Moto</option>
+                    <option value="3">Van</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="password">Ano</label>
+                  <input type="text" id="password" class="form-control" />
                 </div>
               </form>
             </div>
           </div>
           <div class="col-6">
             <div class="card-body">
-              <h1 class="card-title">Registrar Saída</h1>
+              <h1 class="card-title">Dados do condutor</h1>
               <form>
                 <div class="form-group">
-                  <label for="username">Placa do Carro</label>
+                  <label for="username">Nome</label>
                   <input type="text" id="username" class="form-control" />
                 </div>
                 <div class="form-group">
-                  <label for="password">Nome do Condutor</label>
+                  <label for="password">Documento</label>
                   <input type="text" id="password" class="form-control" />
                 </div>
                 <div class="form-group">
-                  <label for="password">Documento do Condutor</label>
+                  <label for="password">Telefone</label>
                   <input type="text" id="password" class="form-control" />
                 </div>
-                <div class="btn-group gap-2 btn-group-lg">
-                  <button class="btn btn-secondary btn-block">Efetuar saída</button>
-                  <button class="btn btn-secondary btn-block">Escanear Ticket</button>
-                </div>
               </form>
+              <router-link to="/home" class="btn btn-secondary btn-block"
+                >Finalizar Cadastro</router-link
+              >
             </div>
           </div>
         </div>
@@ -97,7 +112,9 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import 'bootstrap-icons/font/bootstrap-icons.css'
+</script>
 
 <style scoped>
 .container11 {
