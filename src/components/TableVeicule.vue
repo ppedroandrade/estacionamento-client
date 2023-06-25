@@ -12,26 +12,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in veiculos" :key="item.id" class="text-center">
-          <td>{{ item.Placa }}</td>
-          <td>{{ item.Modelo }}</td>
-          <td>{{ item.Cor }}</td>
-          <td>{{ item.Tipo }}</td>
-          <td>{{ item.Ano }}</td>
+        <tr v-for="item in veiculoList" :key="item.id" class="text-center">
+          <td>{{ item.placa }}</td>
+          <td>{{ item.modelo.nome }}</td>
+          <td>{{ item.cor }}</td>
+          <td>{{ item.tipo }}</td>
+          <td>{{ item.ano }}</td>
           <td>
             <div class="btn-group gap-2 btn-group-sm">
-              <button
-                type="button"
-                class="btn btn-outline-secondary btn-sm"
-                @click="editarVeiculo(item)"
-              >
+              <button type="button" class="btn btn-outline-secondary btn-sm">
                 <i class="bi bi-pencil-fill"></i>
               </button>
-              <button
-                type="button"
-                class="btn btn-outline-danger btn-sm"
-                @click="excluirVeiculo(item)"
-              >
+              <button type="button" class="btn btn-outline-danger btn-sm">
                 <i class="bi bi-trash-fill"></i>
               </button>
             </div>
@@ -42,80 +34,49 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import VeiculoClient from '../client/veiculo.client'
+import { Veiculo } from '../model/veiculo'
 export default {
+  name: 'TableVeicule',
   data() {
     return {
-      veiculos: [], // Array para armazenar os veículos
-      condutores: [] // Array para armazenar os condutores
+      veiculoList: new Array<Veiculo>()
     }
   },
-  created() {
-    // Carregar os veículos da API
-    this.carregarVeiculos()
-    // Carregar os condutores da API
-    this.carregarCondutores()
+  mounted() {
+    this.findAll()
   },
   methods: {
-    carregarVeiculos() {
-      // Chamar a API para carregar os veículos e atribuir ao array veiculos
-      // Exemplo:
-      this.veiculos = [
-        {
-          id: 1,
-          Modelo: 'Celta',
-          Cor: 'Preto',
-          Tipo: 'Carro',
-          Placa: 'ABC-1234',
-          Ano: '1234'
-        },
-        {
-          id: 2,
-          Modelo: 'Celta',
-          Cor: 'Preto',
-          Tipo: 'Carro',
-          Placa: 'ABC-1234',
-          Ano: '1234'
-        },
-        {
-          id: 3,
-          Modelo: 'Celta',
-          Cor: 'Preto',
-          Tipo: 'Carro',
-          Placa: 'ABC-1234',
-          Ano: '1234'
-        }
-      ]
-    },
-    carregarCondutores() {
-      // Chamar a API para carregar os condutores e atribuir ao array condutores
-      // Exemplo:
-      this.condutores = [
-        {
-          id: 1,
-          Nome: 'Pedro',
-          Cpf: '99999999',
-          Telefone: '99999999',
-          TempoPago: '7,7',
-          TempoDesconto: '5'
-        },
-        {
-          id: 2,
-          Nome: 'Pedro',
-          Cpf: '99999999',
-          Telefone: '99999999',
-          TempoPago: '7,7',
-          TempoDesconto: '5'
-        },
-        {
-          id: 3,
-          Nome: 'Pedro',
-          Cpf: '99999999',
-          Telefone: '99999999',
-          TempoPago: '7,7',
-          TempoDesconto: '5'
-        }
-      ]
+    findAll() {
+      VeiculoClient.listaAll()
+        .then((success: Veiculo[]) => {
+          console.log(success)
+          this.veiculoList = success
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+  },
+  getFormattedValue(item: any, field: string): string {
+    const fieldPath = field.split('.')
+    let value = item
+
+    for (const key of fieldPath) {
+      value = value[key]
+
+      if (value === undefined) {
+        return ''
+      }
+    }
+
+    if (field === 'saida' && value === null) {
+      return 'Em aberto'
+    } else if (field === 'ativo') {
+      return value ? 'Ativo' : 'Desativo'
+    } else {
+      return String(value)
     }
   }
 }

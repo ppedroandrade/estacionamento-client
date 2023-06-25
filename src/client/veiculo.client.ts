@@ -6,7 +6,7 @@ export class VeiculoClient {
 
   constructor() {
     this.axiosClient = axios.create({
-      baseURL: 'http://localhost:8080/api/condutor',
+      baseURL: 'http://localhost:8080/api/veiculo',
       headers: {
         'Content-Type': 'application/json'
       }
@@ -15,6 +15,13 @@ export class VeiculoClient {
   public async findById(id: number): Promise<Veiculo> {
     try {
       return (await this.axiosClient.get<Veiculo>(`/${id}`)).data
+    } catch (error: any) {
+      return Promise.reject(error.response)
+    }
+  }
+  public async listaAll(): Promise<Veiculo[]> {
+    try {
+      return (await this.axiosClient.get<Veiculo[]>(`/lista`)).data
     } catch (error: any) {
       return Promise.reject(error.response)
     }
@@ -41,3 +48,4 @@ export class VeiculoClient {
     }
   }
 }
+export default new VeiculoClient()

@@ -26,20 +26,23 @@ export class CondutorClient {
       return Promise.reject(error.response)
     }
   }
-  public async editar(condutor: Condutor): Promise<void> {
+  public async editarCondutor(id: number, condutor: Condutor): Promise<any> {
     try {
-      return (await this.axiosClient.put(`/${condutor.id}`, condutor)).data
+      return await this.axiosClient.put(`/${id}`, condutor)
     } catch (error: any) {
       return Promise.reject(error.response)
     }
   }
-  public async delete(id: number): Promise<string> {
+
+  public async delete(id: number): Promise<any> {
     try {
-      return (await this.axiosClient.delete<string>(`/${id}`)).data
+      const response = await this.axiosClient.delete(`/${id}`)
+      return response
     } catch (error: any) {
-      return Promise.reject(error.response)
+      throw error.response
     }
   }
+
   public async listaAll(): Promise<Condutor[]> {
     try {
       return (await this.axiosClient.get<Condutor[]>(`/lista`)).data

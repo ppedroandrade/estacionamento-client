@@ -62,7 +62,14 @@
                 </div>
                 <div class="form-group">
                   <label for="password">Cor</label>
-                  <input type="text" id="password" class="form-control" />
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    style="border: 1.5px solid #ccc"
+                    v-model="corSelecionada"
+                  >
+                    <option v-for="cor in opcoesCor" :value="cor">{{ cor }}</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="password">Tipo</label>
@@ -71,10 +78,9 @@
                     class="form-select"
                     aria-label="Default select example"
                     style="border: 1.5px solid #ccc"
+                    v-model="tipoSelecionado"
                   >
-                    <option value="1">Carro</option>
-                    <option value="2">Moto</option>
-                    <option value="3">Van</option>
+                    <option v-for="opcao in opcoesTipo" :value="opcao">{{ opcao }}</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -112,8 +118,20 @@
   </div>
 </template>
 
-<script>
-import 'bootstrap-icons/font/bootstrap-icons.css'
+<script lang="ts">
+import { Tipo } from '../model/Enums/tipo'
+import { Cor } from '../model/Enums/cor'
+export default {
+  name: 'Tipo',
+  data() {
+    return {
+      tipoSelecionado: null,
+      corSelecionada: null,
+      opcoesTipo: Object.values(Tipo).filter((value) => typeof value === 'string'),
+      opcoesCor: Object.values(Cor).filter((value) => typeof value === 'string')
+    }
+  }
+}
 </script>
 
 <style scoped>
