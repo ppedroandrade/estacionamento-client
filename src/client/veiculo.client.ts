@@ -33,9 +33,9 @@ export class VeiculoClient {
       return Promise.reject(error.response)
     }
   }
-  public async editar(veiculo: Veiculo): Promise<void> {
+  public async editarVeiculo(id: number, Veiculo: Veiculo): Promise<any> {
     try {
-      return (await this.axiosClient.put(`/${veiculo.id}`, veiculo)).data
+      return await this.axiosClient.put(`/${id}`, Veiculo)
     } catch (error: any) {
       return Promise.reject(error.response)
     }

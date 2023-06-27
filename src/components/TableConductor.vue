@@ -164,22 +164,20 @@ export default {
     },
 
     salvarEdicao(item) {
-      if (confirm('Tem certeza de que deseja editar este condutor?')) {
-        item.nome = item.nomeEditado
-        item.cpf = item.cpfEditado
-        item.telefone = item.telefoneEditado
+      item.nome = item.nomeEditado
+      item.cpf = item.cpfEditado
+      item.telefone = item.telefoneEditado
 
-        CondutorClient.editarCondutor(item.id, item)
-          .then((response) => {
-            console.log('Condutor editado:', response)
-            item.editavel = false
-            this.exibirToast('success', 'Edição efetuada com sucesso')
-          })
-          .catch((error) => {
-            console.error('Erro ao editar condutor:', error)
-            this.exibirToast('danger', 'Erro ao editar condutor. Favor inserir um CPF válido.')
-          })
-      }
+      CondutorClient.editarCondutor(item.id, item)
+        .then((response) => {
+          console.log('Condutor editado:', response)
+          item.editavel = false
+          this.exibirToast('success', 'Edição efetuada com sucesso')
+        })
+        .catch((error) => {
+          console.error('Erro ao editar condutor:', error)
+          this.exibirToast('danger', 'Erro ao editar condutor.', error)
+        })
     },
 
     excluirCondutor(id) {

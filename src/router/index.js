@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import DashBoard from '../views/DashBoard.vue'
 import InicialView from '../views/InicialView.vue'
-import ModalForm from '../views/ModalForm.vue'
 import ConfigPage from '../views/ConfigPage.vue'
 
 const router = createRouter({
@@ -15,12 +14,7 @@ const router = createRouter({
     {
       path: '/home',
       name: 'home',
-      component: HomeView
-    },
-    {
-      path: '/cadastro',
-      name: 'cadastro',
-      component: ModalForm
+      component: DashBoard
     },
     {
       path: '/configuracao',
@@ -30,7 +24,7 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/Tables.vue')
     }
   ]
 })

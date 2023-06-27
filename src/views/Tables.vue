@@ -37,7 +37,14 @@
     <div class="card">
       <div class="card-header d-flex justify-content-between">
         <h3 class="mb-0">Informações sobre Condutores/veiculos</h3>
-        <button class="btn btn-outline-secondary">Efetuar um cadastro</button>
+        <div class="btn-group gap-2">
+          <button class="btn btn-outline-secondary" @click="showModalRegisterC = true">
+            Registrar um Condutor
+          </button>
+          <buttton class="btn btn-outline-secondary" @click="showModalRegisterV = true"
+            >Registar um Veiculo</buttton
+          >
+        </div>
       </div>
     </div>
     <div class="container1 mt-4">
@@ -85,16 +92,28 @@
       </div>
     </div>
   </div>
+  <ModalRegisterC v-if="showModalRegisterC" @close="showModalRegisterC = false"></ModalRegisterC>
+  <ModalRegisterV v-if="showModalRegisterV" @close="showModalRegisterV = false"></ModalRegisterV>
 </template>
 
 <script>
 import TableUsers from '../components/TableConductor.vue'
 import TableVeicules from '../components/TableVeicule.vue'
+import ModalRegisterC from '../components/RegisterUser.vue'
+import ModalRegisterV from '../components/RegisterVihicle.vue'
 
 export default {
   components: {
     TableUsers,
-    TableVeicules
+    TableVeicules,
+    ModalRegisterC,
+    ModalRegisterV
+  },
+  data() {
+    return {
+      showModalRegisterC: false,
+      showModalRegisterV: false
+    }
   }
 }
 </script>
