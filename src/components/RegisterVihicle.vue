@@ -15,18 +15,26 @@
           <div class="col-9">
             <div class="modal-body">
               <h1 class="modal-title">Informações do Condutor</h1>
-              <form>
+              <form @submit.prevent="cadastrarVeiculo">
                 <div class="form-group">
                   <label for="username">Placa do Carro</label>
-                  <input type="text" id="username" class="form-control" />
+                  <input type="text" id="username" class="form-control" v-model="veiculo.placa" />
                 </div>
                 <div class="form-group">
                   <label for="password">Modelo</label>
-                  <input type="text" id="password" class="form-control" />
+                  <input type="text" id="password" class="form-control" v-model="veiculo.modelo" />
                 </div>
                 <div class="form-group">
                   <label for="password">Marca</label>
-                  <input type="text" id="password" class="form-control" />
+
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    style="border: 1.5px solid #ccc"
+                    v-model="tipoSelecionado"
+                  >
+                    <option v-for="marca in opcoesMarca" :value="marca">{{ marca }}</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="password">Cor</label>
@@ -68,6 +76,10 @@
 <script lang="ts">
 import { Tipo } from '../model/Enums/tipo'
 import { Cor } from '../model/Enums/cor'
+import { Marca } from '../model/marca'
+import MarcaClient from '../client/marca.client'
+import VeiculoClient from '../client/veiculo.client'
+import { Veiculo } from '../model/veiculo'
 
 export default {
   name: 'ModalRegisterV',
@@ -75,13 +87,33 @@ export default {
     return {
       tipoSelecionado: null,
       corSelecionada: null,
+      marcaSelecionada: null,
       opcoesTipo: Object.values(Tipo).filter((value) => typeof value === 'string'),
-      opcoesCor: Object.values(Cor).filter((value) => typeof value === 'string')
+      opcoesCor: Object.values(Cor).filter((value) => typeof value === 'string'),
+      opcoesMarca: Object.values(Marca).filter((value) => typeof value === 'string'),
+      veiculo: new Veiculo()
     }
   },
   methods: {
     closeModal() {
       this.$emit('close')
+    },
+    cadastrarVeiculo() {
+      VeiculoClient.cadastrar(this.veiculo)
+        .then(() => {
+          this.closeModal()
+          alert('Registro feito com sucesso')
+          window.location.reload()
+        })
+        .catch((error) => {})
+    },
+    marcaList() {
+      MarcaClient.findAll()
+        .then((response) => (this.opcoesMarca = response))
+        .catch((error) => {})
+    },
+    mounted() {
+      this.marcaList()
     }
   }
 }

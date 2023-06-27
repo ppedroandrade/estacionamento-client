@@ -114,6 +114,10 @@
                 />
               </div>
               <div class="divider"></div>
+              <button class="btn btn-outline-secondary" @click="showModalRegisterBrand = true">
+                Registrar um Modelo
+              </button>
+              <div class="divider"></div>
               <div class="btn-group gap-2 btn-group-lg">
                 <button class="btn btn-outline-danger">Cancelar</button>
                 <button class="btn btn-outline-secondary">Salvar</button>
@@ -126,20 +130,27 @@
   </div>
   <ModalRegisterC v-if="showModalRegisterC" @close="showModalRegisterC = false"></ModalRegisterC>
   <ModalRegisterV v-if="showModalRegisterV" @close="showModalRegisterV = false"></ModalRegisterV>
+  <ModalRegisterBrand
+    v-if="showModalRegisterBrand"
+    @close="showModalRegisterBrand = false"
+  ></ModalRegisterBrand>
 </template>
 
 <script>
 import ModalRegisterC from '../components/RegisterUser.vue'
 import ModalRegisterV from '../components/RegisterVihicle.vue'
+import ModalRegisterBrand from '../components/RegisterBrand.vue'
 export default {
   components: {
     ModalRegisterC,
-    ModalRegisterV
+    ModalRegisterV,
+    ModalRegisterBrand
   },
   data() {
     return {
       showModalRegisterC: false,
-      showModalRegisterV: false
+      showModalRegisterV: false,
+      showModalRegisterBrand: false
     }
   }
 }

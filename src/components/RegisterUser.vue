@@ -15,21 +15,28 @@
           <div class="col-9">
             <div class="modal-body">
               <h1 class="modal-title">Informações do Condutor</h1>
-              <form>
+              <form @submit.prevent="cadastrarCondutor">
                 <div class="form-group">
                   <label for="username">Nome</label>
-                  <input type="text" id="username" class="form-control" />
+                  <input type="text" id="username" class="form-control" v-model="condutor.nome" />
                 </div>
                 <div class="form-group">
-                  <label for="password">CPF</label>
-                  <input type="text" id="password" class="form-control" />
+                  <label for="cpf">CPF</label>
+                  <input type="text" id="cpf" class="form-control" v-model="condutor.cpf" />
                 </div>
                 <div class="form-group">
-                  <label for="password">Telefone</label>
-                  <input type="text" id="password" class="form-control" />
+                  <label for="telefone">Telefone</label>
+                  <input
+                    type="text"
+                    id="telefone"
+                    class="form-control"
+                    v-model="condutor.telefone"
+                  />
                 </div>
+                <button class="btn btn-secondary btn-block" type="submit">
+                  Finalizar Cadastro
+                </button>
               </form>
-              <button class="btn btn-secondary btn-block">Finalizar Cadastro</button>
             </div>
           </div>
         </div>
@@ -38,12 +45,29 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
+import CondutorClient from '../client/condutor.client'
+import { Condutor } from '../model/condutor'
+
 export default {
   name: 'ModalRegisterV',
+  data() {
+    return {
+      condutor: new Condutor() // Instância vazia de Condutor
+    }
+  },
   methods: {
     closeModal() {
       this.$emit('close')
+    },
+    cadastrarCondutor() {
+      CondutorClient.cadastrar(this.condutor)
+        .then(() => {
+          this.closeModal()
+        })
+        .catch((error) => {
+          // Tratar o erro e exibir uma mensagem de erro, se necessário
+        })
     }
   }
 }

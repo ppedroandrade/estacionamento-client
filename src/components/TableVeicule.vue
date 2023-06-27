@@ -212,7 +212,6 @@ export default {
 </script>
 
 <style>
-/* Adicione os estilos de posicionamento do toast-container */
 #toast-container {
   z-index: 9999;
   top: 0;
