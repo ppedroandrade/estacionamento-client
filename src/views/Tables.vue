@@ -20,7 +20,7 @@
               <a class="nav-link" href="/home">Dash Board</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">Condutores/veiculos</a>
+              <a class="nav-link" href="/about">Tabelas</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/register">Registrar</a>
@@ -56,7 +56,7 @@
                 aria-expanded="true"
                 aria-controls="panelsStayOpen-collapseOne"
               >
-                Veiculo
+                Veiculos
               </button>
             </h2>
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
@@ -75,7 +75,7 @@
                 aria-expanded="true"
                 aria-controls="panelsStayOpen-collapseTwo"
               >
-                Condutor
+                Condutores
               </button>
             </h2>
             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
@@ -93,12 +93,12 @@
                   aria-expanded="true"
                   aria-controls="panelsStayOpen-collapseThree"
                 >
-                  Marca
+                  Marcas
                 </button>
               </h2>
               <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show">
                 <div class="accordion-body">
-                  <p>FODASEEEEEEEEEEEE</p>
+                  <TableBrand />
                 </div>
               </div>
             </div>
@@ -112,12 +112,12 @@
                   aria-expanded="true"
                   aria-controls="panelsStayOpen-collapseFour"
                 >
-                  Modelo
+                  Modelos
                 </button>
               </h2>
               <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse show">
                 <div class="accordion-body">
-                  <FormRegisterModel />
+                  <TableModelo />
                 </div>
               </div>
             </div>
@@ -131,11 +131,15 @@
 <script>
 import TableUsers from '../components/TableConductor.vue'
 import TableVeicules from '../components/TableVeicule.vue'
+import TableBrand from '../components/TableBrand.vue'
+import TableModelo from '../components/TableModel.vue'
 
 export default {
   components: {
     TableUsers,
-    TableVeicules
+    TableVeicules,
+    TableBrand,
+    TableModelo
   },
   data() {}
 }

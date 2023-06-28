@@ -20,7 +20,7 @@
               <a class="nav-link" href="/home">Dash Board</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">Condutores/veiculos</a>
+              <a class="nav-link" href="/about">Tabelas</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/register">Registrar</a>
