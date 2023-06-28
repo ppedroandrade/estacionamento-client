@@ -109,10 +109,6 @@
                 />
               </div>
               <div class="divider"></div>
-              <button class="btn btn-outline-secondary" @click="showModalRegisterBrand = true">
-                Registrar um Modelo
-              </button>
-              <div class="divider"></div>
               <div class="btn-group gap-2 btn-group-lg">
                 <button class="btn btn-outline-danger">Cancelar</button>
                 <button class="btn btn-outline-secondary">Salvar</button>

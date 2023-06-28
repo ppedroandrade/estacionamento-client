@@ -39,7 +39,7 @@
     </nav>
     <div class="card">
       <div class="card-header d-flex justify-content-between">
-        <h3 class="mb-0">Efetuar Registros</h3>
+        <h3 class="mb-0">Visualizar Registros</h3>
         <div class="btn-group gap-2"></div>
       </div>
     </div>

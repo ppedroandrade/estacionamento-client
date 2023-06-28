@@ -91,6 +91,7 @@ export default {
         })
         .catch((error) => {
           console.log(error)
+          alert(error.data)
         })
     },
 
@@ -132,6 +133,7 @@ export default {
           console.log('Marca editada:', response)
           item.editavel = false
           this.exibirToast('success', 'Edição efetuada com sucesso')
+          window.location.reload()
         })
         .catch((error) => {
           console.error('Erro ao editar marca:', error)
@@ -149,6 +151,7 @@ export default {
           })
           .catch((error) => {
             console.error('Erro ao excluir marca:', error)
+            alert(error.data)
           })
       }
     }

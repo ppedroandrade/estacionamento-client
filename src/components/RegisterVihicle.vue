@@ -63,9 +63,11 @@ export default {
         .then(() => {
           alert('Registro feito com sucesso')
           this.resetForm()
+          window.location.reload()
         })
         .catch((error) => {
           console.log(error)
+          alert(error.data)
         })
     },
     selectModeloList() {

@@ -48,21 +48,43 @@
         <div class="col-6">
           <div class="card-body">
             <h1 class="card-title">Registrar entrada</h1>
-            <form>
+            <form @submit.prevent="onClickCadastrar">
               <div class="form-group">
-                <label for="username">Placa do Carro</label>
-                <input type="text" id="username" class="form-control" />
+                <label>Selecione um veiculo</label>
+
+                <select
+                  class="form-select"
+                  v-model="movimentacao.veiculo"
+                  aria-label="Default select example"
+                >
+                  <option selected disabled value="">Selecione um Veiculo</option>
+                  <option :value="item" v-for="item in veiculosList" :key="item.id">
+                    {{ item.placa }}
+                  </option>
+                </select>
               </div>
               <div class="form-group">
-                <label for="password">Nome do Condutor</label>
-                <input type="text" id="password" class="form-control" />
+                <label>Selecione um condutor</label>
+
+                <select
+                  class="form-select"
+                  v-model="movimentacao.condutor"
+                  aria-label="Default select example"
+                >
+                  <option selected disabled value="">Selecione um Condutor</option>
+                  <option :value="item" v-for="item in condutoresList" :key="item.id">
+                    {{ item.nome }}
+                  </option>
+                </select>
               </div>
               <div class="form-group">
-                <label for="password">Documento do Condutor</label>
-                <input type="text" id="password" class="form-control" />
+                <label class="form-label">Hora entrada</label>
+                <input class="form-control" placeholder="" v-model="movimentacao.entrada" />
               </div>
               <div class="btn-group gap-2 btn-group-lg">
-                <button class="btn btn-secondary btn-block">Efetuar entrada</button>
+                <button class="btn btn-secondary btn-block" type="submit">
+                  Efetuar Movimentação
+                </button>
               </div>
             </form>
           </div>
@@ -72,44 +94,124 @@
             <h1 class="card-title">Registrar Saída</h1>
             <form>
               <div class="form-group">
-                <label for="username">Placa do Carro</label>
-                <input type="text" id="username" class="form-control" />
+                <label>Selecione um veiculo</label>
+                <select
+                  class="form-select"
+                  v-model="movimentacao.veiculo"
+                  aria-label="Default select example"
+                >
+                  <option selected disabled value="">Selecione um Veiculo</option>
+                  <option :value="item" v-for="item in veiculosList" :key="item.id">
+                    {{ item.placa }}
+                  </option>
+                </select>
               </div>
               <div class="form-group">
-                <label for="password">Nome do Condutor</label>
-                <input type="text" id="password" class="form-control" />
+                <label>Selecione um condutor</label>
+
+                <select
+                  class="form-select"
+                  v-model="movimentacao.condutor"
+                  aria-label="Default select example"
+                >
+                  <option selected disabled value="">Selecione um Condutor</option>
+                  <option :value="item" v-for="item in condutoresList" :key="item.id">
+                    {{ item.nome }}
+                  </option>
+                </select>
               </div>
               <div class="form-group">
-                <label for="password">Documento do Condutor</label>
-                <input type="text" id="password" class="form-control" />
-              </div>
-              <div class="btn-group gap-2 btn-group-lg">
-                <button class="btn btn-secondary btn-block">Efetuar saída</button>
-                <button class="btn btn-secondary btn-block">Escanear Ticket</button>
+                <label class="form-label">Hora saida</label>
+                <input class="form-control" placeholder="" v-model="movimentacao.saida" />
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+    <div class="accordion border border-gray rounded" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item accordion-secondary">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#panelsStayOpen-collapseOne"
+            aria-expanded="true"
+            aria-controls="panelsStayOpen-collapseOne"
+          >
+            Veiculos
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <TableMovimentacao />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <ModalRegisterC v-if="showModalRegisterC" @close="showModalRegisterC = false"></ModalRegisterC>
-  <ModalRegisterV v-if="showModalRegisterV" @close="showModalRegisterV = false"></ModalRegisterV>
 </template>
 
-<script>
-import ModalRegisterC from '../components/RegisterUser.vue'
-import ModalRegisterV from '../components/RegisterVihicle.vue'
+<script lang="ts">
+import TableMovimentacao from '../components/TableMovimentation.vue'
+
+import MovimentacaoClient from '../client/movimentacao.client'
+import VeiculoClient from '../client/veiculo.client'
+import CondutorClient from '../client/condutor.client'
+
+import { Movimentacao } from '../model/Movimentacao'
+import { Condutor } from '../model/condutor'
+import { Veiculo } from '../model/veiculo'
+
 export default {
+  name: 'MovimentacaoFormulario',
   components: {
-    ModalRegisterC,
-    ModalRegisterV
+    TableMovimentacao
   },
   data() {
     return {
-      showModalRegisterC: false,
-      showModalRegisterV: false
+      movimentacao: new Movimentacao(),
+      condutoresList: [] as Condutor[],
+      veiculosList: [] as Veiculo[]
     }
+  },
+  mounted() {
+    this.selectCondutorList()
+    this.selectVeiculosList()
+  },
+  methods: {
+    selectCondutorList() {
+      CondutorClient.findAll()
+        .then((response) => {
+          this.condutoresList = response
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    selectVeiculosList() {
+      VeiculoClient.findAll()
+        .then((response) => {
+          this.veiculosList = response
+        })
+        .catch((error) => {
+          console.log(error.data)
+        })
+    },
+    onClickCadastrar() {
+      MovimentacaoClient.cadastrar(this.movimentacao)
+        .then((sucess) => {
+          alert(sucess)
+          this.movimentacao = new Movimentacao()
+          alert('Movimentação efetuada com sucesso')
+          window.location.reload()
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    closeToast() {}
   }
 }
 </script>
@@ -118,6 +220,9 @@ export default {
 .container11 {
   max-width: 800px;
   height: 100%;
+}
+.divider {
+  margin: 50px;
 }
 .container1Dashboar {
   max-width: 100%;

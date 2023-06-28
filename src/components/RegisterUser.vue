@@ -37,9 +37,11 @@ export default {
         .then((success) => {
           console.log(success)
           alert('Registro Realizado')
+          window.location.reload()
         })
         .catch((error) => {
           console.error(error)
+          alert(error.data)
         })
     }
   }

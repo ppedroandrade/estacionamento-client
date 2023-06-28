@@ -120,11 +120,8 @@ export default {
 
     formatTime(timeArray) {
       if (Array.isArray(timeArray)) {
-        const [hours, minutes, seconds] = timeArray
-        const timeString = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(
-          2,
-          '0'
-        )}:${String(seconds).padStart(2, '0')}`
+        const [hours, minutes] = timeArray
+        const timeString = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`
         return timeString
       }
       if (timeArray == null) {

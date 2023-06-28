@@ -46,14 +46,20 @@ export default {
         })
         .catch((error) => {
           console.log(error)
+          alert(error.data)
         })
     },
     cadastrarModelo() {
       ModeloClient.cadastrar(this.modelo)
         .then((sucess) => {
           this.modelo = new Modelo()
+          alert('Criado com sucesso')
+          window.location.reload()
         })
-        .catch((error) => {})
+        .catch((error) => {
+          console.log(error, 'aqui')
+          alert(error.data)
+        })
     }
   }
 }

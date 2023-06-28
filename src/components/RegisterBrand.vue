@@ -28,9 +28,11 @@ export default {
         .then((sucess) => {
           this.marca = new Marca()
           alert('Sua Marca foi cadastrada com sucesso')
+          window.location.reload()
         })
         .catch((error) => {
-          alert('Sua Marca teve um problema no cadastro', error.message)
+          console.log(error)
+          alert(error.data)
         })
     }
   }
