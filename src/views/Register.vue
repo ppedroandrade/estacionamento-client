@@ -61,7 +61,7 @@
             </h2>
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
               <div class="accordion-body">
-                <TableVeicules />
+                <FormRegisterV />
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@
             </h2>
             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
               <div class="accordion-body">
-                <TableUsers />
+                <FormRegisterC />
               </div>
             </div>
             <div class="accordion-item">
@@ -98,7 +98,7 @@
               </h2>
               <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show">
                 <div class="accordion-body">
-                  <p>FODASEEEEEEEEEEEE</p>
+                  <FormRegisterBrand />
                 </div>
               </div>
             </div>
@@ -129,15 +129,17 @@
 </template>
 
 <script>
-import TableUsers from '../components/TableConductor.vue'
-import TableVeicules from '../components/TableVeicule.vue'
-
+import FormRegisterV from '../components/RegisterVihicle.vue'
+import FormRegisterC from '../components/RegisterUser.vue'
+import FormRegisterBrand from '../components/RegisterBrand.vue'
+import FormRegisterModel from '../components/RegisterModel.vue'
 export default {
   components: {
-    TableUsers,
-    TableVeicules
-  },
-  data() {}
+    FormRegisterV,
+    FormRegisterC,
+    FormRegisterBrand,
+    FormRegisterModel
+  }
 }
 </script>
 

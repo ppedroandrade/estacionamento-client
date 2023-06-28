@@ -23,6 +23,9 @@
               <a class="nav-link" href="/about">Condutores/veiculos</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/register">Registrar</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/configuracao">Configurações</a>
             </li>
           </ul>
@@ -37,14 +40,6 @@
     <div class="card">
       <div class="card-header d-flex justify-content-between">
         <h3 class="mb-0">Controle de Entrada e Saída</h3>
-        <div class="btn-group gap-2">
-          <button class="btn btn-outline-secondary" @click="showModalRegisterC = true">
-            Registrar um Condutor
-          </button>
-          <buttton class="btn btn-outline-secondary" @click="showModalRegisterV = true"
-            >Registar um Veiculo</buttton
-          >
-        </div>
       </div>
       <div class="card-body">
         <p class="card-text">Bem-vindo(a) ao sistema de controle de entrada e saída.</p>

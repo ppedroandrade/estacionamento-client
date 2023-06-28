@@ -23,6 +23,9 @@
               <a class="nav-link" href="/about">Condutores/veiculos</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/register">Registrar</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/configuracao">Configurações</a>
             </li>
           </ul>
@@ -37,14 +40,6 @@
     <div class="card">
       <div class="card-header d-flex justify-content-between">
         <h3 class="mb-0">Configurações</h3>
-        <div class="btn-group gap-2">
-          <button class="btn btn-outline-secondary" @click="showModalRegisterC = true">
-            Registrar um Condutor
-          </button>
-          <button class="btn btn-outline-secondary" @click="showModalRegisterV = true">
-            Registrar um Veiculo
-          </button>
-        </div>
       </div>
       <div class="row">
         <div class="col-6">

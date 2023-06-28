@@ -123,7 +123,7 @@ export default {
   },
   methods: {
     findAll() {
-      VeiculoClient.listaAll()
+      VeiculoClient.findAll()
         .then((success) => {
           console.log(success)
           this.veiculoList = success.map((item) => ({
@@ -182,7 +182,7 @@ export default {
       item.cor = item.corEditado
       item.tipo = item.tipoEditado
 
-      VeiculoClient.editarVeiculo(item.id, item)
+      VeiculoClient.editar(item.id, item)
         .then((response) => {
           console.log('Veículo editado:', response)
           item.editavel = false
@@ -196,7 +196,7 @@ export default {
 
     excluirCondutor(id) {
       if (confirm('Tem certeza de que deseja excluir este Veiculo?')) {
-        VeiculoClient.delete(id)
+        VeiculoClient.excluir(id)
           .then((response) => {
             console.log('Condutor excluído:', response)
             this.exibirToast('success', 'Veiculo deletado com sucesso')

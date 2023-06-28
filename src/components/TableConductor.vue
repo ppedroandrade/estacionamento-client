@@ -102,7 +102,7 @@ export default {
   },
   methods: {
     findAll() {
-      CondutorClient.listaAll()
+      CondutorClient.findAll()
         .then((success) => {
           console.log(success)
           this.condutorlist = success.map((item) => ({
@@ -126,8 +126,11 @@ export default {
           '0'
         )}:${String(seconds).padStart(2, '0')}`
         return timeString
-      } else {
+      }
+      if (timeArray == null) {
         return '---'
+      } else {
+        return timeArray
       }
     },
 
@@ -168,7 +171,7 @@ export default {
       item.cpf = item.cpfEditado
       item.telefone = item.telefoneEditado
 
-      CondutorClient.editarCondutor(item.id, item)
+      CondutorClient.editar(item.id, item)
         .then((response) => {
           console.log('Condutor editado:', response)
           item.editavel = false
@@ -182,7 +185,7 @@ export default {
 
     excluirCondutor(id) {
       if (confirm('Tem certeza de que deseja excluir este condutor?')) {
-        CondutorClient.delete(id)
+        CondutorClient.excluirCondutor(id)
           .then((response) => {
             console.log('Condutor excluído:', response)
             this.exibirToast('success', 'Usuário deletado com sucesso')

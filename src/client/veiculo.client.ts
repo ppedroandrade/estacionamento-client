@@ -1,7 +1,7 @@
+import axios, { AxiosInstance, AxiosResponse } from 'axios'
 import { Veiculo } from '../model/veiculo'
-import axios, { AxiosInstance } from 'axios'
 
-export class VeiculoClient {
+class VeiculoClient {
   private axiosClient: AxiosInstance
 
   constructor() {
@@ -12,6 +12,7 @@ export class VeiculoClient {
       }
     })
   }
+
   public async findById(id: number): Promise<Veiculo> {
     try {
       return (await this.axiosClient.get<Veiculo>(`/${id}`)).data
@@ -19,33 +20,39 @@ export class VeiculoClient {
       return Promise.reject(error.response)
     }
   }
-  public async listaAll(): Promise<Veiculo[]> {
+
+  public async findAll(): Promise<Veiculo[]> {
     try {
       return (await this.axiosClient.get<Veiculo[]>(`/lista`)).data
     } catch (error: any) {
       return Promise.reject(error.response)
     }
   }
-  public async cadastrar(veiculo: Veiculo): Promise<void> {
+
+  public async cadastrar(veiculo: Veiculo): Promise<string> {
     try {
-      return await this.axiosClient.post('/', veiculo)
+      return (await this.axiosClient.post<string>(``, veiculo)).data
     } catch (error: any) {
       return Promise.reject(error.response)
     }
   }
-  public async editarVeiculo(id: number, Veiculo: Veiculo): Promise<any> {
+
+  public async editar(id: number, marca: Veiculo): Promise<string> {
     try {
-      return await this.axiosClient.put(`/${id}`, Veiculo)
+      return (await this.axiosClient.put<string>(`/${id}`, marca)).data
     } catch (error: any) {
       return Promise.reject(error.response)
     }
   }
-  public async delete(id: number): Promise<string> {
+
+  public async excluir(id: number): Promise<string> {
     try {
-      return (await this.axiosClient.delete<string>(`/${id}`)).data
+      const response: AxiosResponse<string> = await this.axiosClient.delete(`/${id}`)
+      return response.data
     } catch (error: any) {
       return Promise.reject(error.response)
     }
   }
 }
+
 export default new VeiculoClient()
